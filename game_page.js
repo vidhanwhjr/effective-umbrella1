@@ -8,14 +8,14 @@ document.getElementById("span1").innerHTML = player1_score;
 document.getElementById("span2").innerHTML = player2_score;
 document.getElementById("blank1").innerHTML = "Question by -" + player1_names;
 document.getElementById("blank2").innerHTML = "Answer by -" + player2_names;
-var Question_turn = "player1";
+var question_turn = "player1";
 var answer_turn = "player2";
 
 function send(){
     var word = document.getElementById("text-input1").value;
+    var cow = word.toLowerCase();
     var word_lowercase = word.toLowerCase();
-    var question_word = word.toLowerCase();
-    var word_length = word.length();
+    var word_length = word.length;
     for(var i = 0; i<word_length; i+=2 ){
         var letter_store = word_lowercase.charAt(i);
         var word_lowercase = word_lowercase.replace(letter_store, "_");
@@ -32,7 +32,8 @@ function send(){
 function check(){
     var answer = document.getElementById("answer_input").value;
     var final_answer = answer.toLowerCase();
-    if(final_answer == question_word){
+    console.log("running check function");
+    if(final_answer == cow){
         if(answer_turn == "player1"){
             var player1_score = player1_score + 1;
             document.getElementById("span1").innerHTML = player1_score;
@@ -44,11 +45,11 @@ function check(){
 
     }
     if(Question_turn == "player1"){
-        var Question_turn = "player2";
+        var question_turn = "player2";
         document.getElementById("blank1").innerHTML = "Question by -" + player2_names;
     }
     else{
-       var Question_turn = "player1";
+       var question_turn = "player1";
        document.getElementById("blank1").innerHTML = "Question by -" + player1_names; 
     }
     if(answer_turn = "player1"){
